@@ -33,7 +33,7 @@ externalproject_add(ext_eigen
 externalproject_add(ext_mve
     PREFIX          mve
     #GIT_REPOSITORY  https://github.com/nmoehrle/mve.git
-    URL             https://github.com/GeoVisionEnvironmental/mvs-texturing/archive/v0.1-arm64v8.tar.gz
+    URL             https://github.com/GeoVisionEnvironmental/mve/archive/v0.1-arm64v8.tar.gz
     UPDATE_COMMAND  ""
     SOURCE_DIR      ${CMAKE_SOURCE_DIR}/elibs/mve
     CONFIGURE_COMMAND ""
