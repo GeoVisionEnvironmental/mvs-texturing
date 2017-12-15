@@ -34,7 +34,7 @@ externalproject_add(ext_mve
     PREFIX          mve
     #GIT_REPOSITORY  https://github.com/nmoehrle/mve.git
     GIT_REPOSITORY  https://github.com/GeoVisionEnvironmental/mve.git
-    GIT_TAG         amd64v8
+    GIT_TAG         arm64v8
     UPDATE_COMMAND  ""
     SOURCE_DIR      ${CMAKE_SOURCE_DIR}/elibs/mve
     CONFIGURE_COMMAND ""
