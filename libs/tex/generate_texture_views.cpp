@@ -150,7 +150,7 @@ from_images_and_camera_files(std::string const & path,
         if (ss.peek() && !ss.eof())
             ss >> cam_info.ppoint[1];
 
-        std::string image_file = util::fs::abspath(util::fs::join_path(path, img_file));
+        std::string image_file = util::fs::abspath(img_file);
         if (cam_info.dist[0] != 0.0f) {
             mve::ByteImage::Ptr image = mve::image::load_file(img_file);
             if (cam_info.dist[1] != 0.0f) {
@@ -161,7 +161,7 @@ from_images_and_camera_files(std::string const & path,
                     cam_info.flen, cam_info.dist[0]);
             }
 
-            const std::string image_file = util::fs::join_path(
+            image_file = util::fs::join_path(
                 tmp_dir,
                 util::fs::replace_extension(util::fs::basename(img_file), "png")
             );
@@ -242,6 +242,12 @@ generate_texture_views(std::string const & in_scene,
         std::string image_name = in_scene.substr(pos + 2, in_scene.size());
         from_mve_scene(scene_dir, image_name, texture_views);
     }
+
+    std::sort(texture_views->begin(), texture_views->end(),
+        [] (TextureView const & l, TextureView const & r) -> bool {
+            return l.get_id() < r.get_id();
+        }
+    );
 
     std::size_t num_views = texture_views->size();
     if (num_views == 0) {
